@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Times</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <main>
+        <h1>Prayer Times</h1>
+        <section class="selectors">
+            <select id="continent">
+                <option hidden>Select a continent</option>
+                <option value="africa">Africa</option>
+                <option value="asia">Asia</option>
+                <option value="europe">Europe</option>
+                <option value="americas">Americas</option>
+                <option value="oceania">Oceania</option>
+            </select>
+
+            <select id="country">
+                <option hidden>Select a country</option>
+            </select>
+
+            <select id="city">
+                <option hidden>Select a city</option>
+            </select>
+
+            <select id="method">
+                <option hidden>Select a method</option>
+                <option value="MWL">Muslim World League</option>
+                <option value="ISNA">Islamic Society of North America</option>
+                <option value="Egypt">Egyptian General Authority of Survey</option>
+                <option value="Makkah">Umm Al-Qura University, Makkah</option>
+                <option value="Karachi">University of Islamic Sciences, Karachi</option>
+            </select>
+        </section>
+        <div class="information-wrapper">
+            <section class="information-1">
+                <div class="text1">
+                    <i class="fa-solid fa-globe"></i>
+                    <h2>Palestine</h2>
+                </div>
+                <div class="text2">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>Gaza</h3>
+                </div>
+                <div class="text3">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <p>14/apr/2025</p>
+                </div>
+                <p>Time remaining for Isha : 02:15:30</p>
+                <button id="reset"><i class="fa-solid fa-rotate"></i><span> Reset</span></button>
+            </section>
+
+          <section class="information-2">
+    <table>
+        <thead>
+            <tr>
+                <th>Prayer</th>
+                <th>Adhan</th>
+            </tr>
+        </thead>
+        <tbody id="prayerTableBody">
+            <tr data-prayer="Fajr">
+                <td><i class="fas fa-sun"></i> <span>Fajr</span></td>
+                <td class="time">-</td>
+            </tr>
+            <tr data-prayer="Dhuhr">
+                <td><i class="fas fa-cloud-sun"></i> <span>Dhuhr</span></td>
+                <td class="time">-</td>
+            </tr>
+            <tr data-prayer="Asr">
+                <td><i class="fas fa-hourglass-half"></i> <span>Asr</span></td>
+                <td class="time">-</td>
+            </tr>
+            <tr data-prayer="Maghrib">
+                <td><i class="fas fa-cloud-moon"></i> <span>Maghrib</span></td>
+                <td class="time">-</td>
+            </tr>
+            <tr data-prayer="Isha">
+                <td><i class="fas fa-moon"></i> <span>Isha</span></td>
+                <td class="time">-</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+        </div>
+    </main>
+
+    <script src="./js/main.js" type="module"></script>
+</body>
+
+</html>
