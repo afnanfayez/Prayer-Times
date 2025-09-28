@@ -8,6 +8,7 @@ import {
     showCities,
     setCurrentTime,
     updatePrayerTable,
+    methodSelect,
 } from './ui.js';
 import { fetchCountriesByContinent, fetchCitiesByCountry, fetchPrayerTimes } from './api.js';
 import { getItemFromStorage, getNextPrayer, setItemInStorage, startCountDown } from './utils.js';
@@ -15,13 +16,14 @@ import { getItemFromStorage, getNextPrayer, setItemInStorage, startCountDown } f
 let continent = getItemFromStorage("continent") || "default";
 let country = getItemFromStorage("country") || "default";
 let city = getItemFromStorage("city") || "default";
-
+let method = getItemFromStorage("method") || "default";
 export async function init() {
     continentSelect.value = continent;
     await getAndShowCountries();
     countrySelect.value = country;
     await getAndShowCities();
     citySelect.value = city;
+    methodSelect.value = method;
     await getAndShowPrayerTimes();
 }
 
@@ -53,8 +55,8 @@ export async function getAndShowCities() {
 }
 
 export async function getAndShowPrayerTimes() {
-    country = countrySelect.value;
     city = citySelect.value;
+    method = methodSelect.value;
     setItemInStorage("city", city);
     if (!country || !city || city === "default" || country === "default") return;
 
@@ -63,7 +65,7 @@ export async function getAndShowPrayerTimes() {
 
     setCurrentTime();
 
-    const prayerTimes = await fetchPrayerTimes(city, country);
+    const prayerTimes = await fetchPrayerTimes(city, country, method || 3);
     console.log("Prayer Times:", prayerTimes);
 
     updatePrayerTable(prayerTimes);

@@ -4,6 +4,7 @@ import {
   countrySelect,
   citySelect,
   resetBtn,
+  methodSelect,
 } from './ui.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,6 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   citySelect.addEventListener("change", async () => {
+    await getAndShowPrayerTimes();
+  });
+
+  methodSelect.addEventListener("change", async () => {
     await getAndShowPrayerTimes();
   });
 

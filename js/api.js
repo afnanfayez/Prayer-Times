@@ -4,7 +4,7 @@ export async function fetchCountriesByContinent(continent) {
   try {
     const response = await fetch(url);
 
-   if (response.status !== 200) {
+    if (response.status !== 200) {
       throw new Error(`HTTP Error: ${response.status}`);
     }
 
@@ -41,7 +41,7 @@ export async function fetchCitiesByCountry(country) {
 
     const data = await response.json();
 
-    if (!data?.data?.length) { 
+    if (!data?.data?.length) {
       throw new Error("No cities found for this country");
     }
 
@@ -53,8 +53,8 @@ export async function fetchCitiesByCountry(country) {
   }
 }
 
-export async function fetchPrayerTimes(country, city) {
-  const url = `https://api.aladhan.com/v1/timingsByCity?country=${country}&city=${city}&method=2`;
+export async function fetchPrayerTimes(country, city, method = 4) {
+  const url = `https://api.aladhan.com/v1/timingsByCity?country=${country}&city=${city}&method=${method == "default" ? 3 : method}`;
 
   try {
     console.log("Fetching prayer times...");
@@ -68,7 +68,7 @@ export async function fetchPrayerTimes(country, city) {
     if (!data.data) throw new Error("No data found");
 
     console.log("Prayer times fetched successfully ");
-    return data.data.timings; 
+    return data.data.timings;
   } catch (error) {
     console.error("Error fetching prayer times:", error.message);
     return null;

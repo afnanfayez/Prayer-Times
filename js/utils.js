@@ -1,5 +1,5 @@
 import { PRAYER_ORDER } from './constants.js';
-import { nextPrayerCountdownEl } from './ui.js';
+import { methodSelect, nextPrayerCountdownEl } from './ui.js';
 export function countDown(ms) {
   const totalSeconds = Math.floor(ms / 1000);
   const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
@@ -50,7 +50,8 @@ export function startCountDown(nextPrayer) {
       }
 
       const countdown = countDown(diff);
-      nextPrayerCountdownEl.textContent = `Time remaining for: ${nextPrayer.name} in ${countdown}`;
+      const methodText = methodSelect.options[methodSelect.selectedIndex].text;
+      nextPrayerCountdownEl.textContent = `Time remaining for: ${nextPrayer.name} in ${countdown} - ${methodText.toLowerCase() == "select a method" ? "Muslim World League" : methodText}`;
     }, 1000);
   }
 }
