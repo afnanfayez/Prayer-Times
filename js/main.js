@@ -11,6 +11,8 @@ import {
 
 import { fetchCountriesByContinent, fetchCitiesByCountry, fetchPrayerTimes } from './api.js';
 
+import { countDown } from './utils.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   // continent changes
   continentSelect.addEventListener("change", async () => {
@@ -99,11 +101,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Calculate time remaining
     const diff = nextPrayerTime - now;
-    const hrs = Math.floor(diff / (1000 * 60 * 60)).toString().padStart(2, "0");
-    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
-    const secs = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, "0");
+const countdown = countDown(diff);
 
-    nextPrayerCountdownEl.textContent = `Time remaining for: ${nextPrayerName} in ${hrs}:${mins}:${secs}`;
+nextPrayerCountdownEl.textContent = `Time remaining for: ${nextPrayerName} in ${countdown}`;
   });
 
 });
