@@ -9,6 +9,7 @@ import {
     setCurrentTime,
     updatePrayerTable,
     methodSelect,
+resetPrayerTimes,
 } from './ui.js';
 import { fetchCountriesByContinent, fetchCitiesByCountry, fetchPrayerTimes } from './api.js';
 import { getItemFromStorage, getNextPrayer, setItemInStorage, startCountDown } from './utils.js';
@@ -39,6 +40,7 @@ export async function getAndShowCountries() {
 
     const countries = await fetchCountriesByContinent(continent);
     showCountries(countries);
+        resetPrayerTimes();
 
 }
 
@@ -52,6 +54,7 @@ export async function getAndShowCities() {
 
     const cities = await fetchCitiesByCountry(country);
     showCities(cities);
+    resetPrayerTimes();
 }
 
 export async function getAndShowPrayerTimes() {

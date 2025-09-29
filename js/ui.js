@@ -45,3 +45,14 @@ export function setCurrentTime() {
     const year = today.getFullYear();
     currentDateEl.textContent = `${day}/${month}/${year}`;
 }
+export function resetPrayerTimes() {
+  const rows = prayerTableBody.querySelectorAll("tr");
+  rows.forEach(row => {
+    const timeCell = row.querySelector(".time");
+    timeCell.textContent = "Loading...";
+  });
+  if (window.nextPrayerInterval) {
+    clearInterval(window.nextPrayerInterval);
+  }
+  nextPrayerCountdownEl.textContent = "";
+}

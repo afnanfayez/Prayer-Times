@@ -51,7 +51,7 @@ export function startCountDown(nextPrayer) {
 
       const countdown = countDown(diff);
       const methodText = methodSelect.options[methodSelect.selectedIndex].text;
-      nextPrayerCountdownEl.textContent = `Time remaining for: ${nextPrayer.name} in ${countdown} - ${methodText.toLowerCase() == "select a method" ? "Muslim World League" : methodText}`;
+      nextPrayerCountdownEl.innerHTML = `${nextPrayer.name} in ${countdown} <br> Method : <span id='methodtext'>${methodText.toLowerCase() == "select a method" ? "Muslim World League" : methodText}</span>`;
     }, 1000);
   }
 }
