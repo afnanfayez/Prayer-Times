@@ -12,21 +12,31 @@ export const resetBtn = document.querySelector("#reset");
 
 
 export function showCountries(countries) {
+    const loading = document.querySelector('.LoadingCountry');
+    if (loading) loading.remove();
+
+    const fragment = document.createDocumentFragment();
     countries.forEach(country => {
         const opt = document.createElement("option");
         opt.value = country;
         opt.textContent = country;
-        countrySelect.append(opt);
+        fragment.appendChild(opt);
     });
+    countrySelect.appendChild(fragment);
 }
 
 export function showCities(cities) {
+    const loading = document.querySelector('.LoadingCity');
+    if (loading) loading.remove();
+
+    const fragment = document.createDocumentFragment();
     cities.forEach(city => {
         const opt = document.createElement("option");
         opt.value = city;
         opt.textContent = city;
-        citySelect.append(opt);
+        fragment.appendChild(opt);
     });
+    citySelect.appendChild(fragment);
 }
 
 export function updatePrayerTable(prayerTimes) {
